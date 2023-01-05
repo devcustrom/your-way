@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/tailwind': ^2.1.3
   '@astrojs/vue': ^1.2.2
   astro: ^1.9.0
+  fit-text: ^2.0.1
   tailwindcss: ^3.0.24
   vue: ^3.2.30
 
@@ -11,6 +12,7 @@ dependencies:
   '@astrojs/tailwind': 2.1.3_tailwindcss@3.2.4
   '@astrojs/vue': 1.2.2_vue@3.2.45
   astro: 1.9.1
+  fit-text: 2.0.1
   tailwindcss: 3.2.4
   vue: 3.2.45
 
@@ -1736,6 +1738,10 @@ packages:
     dependencies:
       micromatch: 4.0.5
       pkg-dir: 4.2.0
+    dev: false
+
+  /fit-text/2.0.1:
+    resolution: {integrity: sha512-OOs9ge/uT49wPx3v8sRfxEy87m2lu/CivAs1WFYc89MuhpdikuvcM2jKFOkq+Ba94Pv6gDlFOSOt1NaPPDIakQ==}
     dev: false
 
   /formdata-polyfill/4.0.10:

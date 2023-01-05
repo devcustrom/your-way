@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Jost';
+    src: local('Jost Regular'), local('Jost-Regular'),
+        url('/fonts/Jost-Regular.woff2') format('woff2'),
+        url('/fonts/Jost-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quam';
+    src: local('Quam Thin'), local('Quam-Thin'),
+        url('/fonts/Quam-Thin.woff2') format('woff2'),
+        url('/fonts/Quam-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quam';
+    src: local('Quam Regular'), local('Quam-Regular'),
+        url('/fonts/Quam-Regular.woff2') format('woff2'),
+        url('/fonts/Quam-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quam';
+    src: local('Quam Bold'), local('Quam-Bold'),
+        url('/fonts/Quam-Bold.woff2') format('woff2'),
+        url('/fonts/Quam-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Quam';
+    src: local('Quam Black'), local('Quam-Black'),
+        url('/fonts/Quam-Black.woff2') format('woff2'),
+        url('/fonts/Quam-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}

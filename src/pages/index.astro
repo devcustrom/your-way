@@ -1,4 +1,6 @@
 ---
+import YourWay from "../components/YourWay.vue";
+import '@css/fonts.css'
 ---
 <html lang="ru">
 	<head>
@@ -7,8 +9,11 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Твой путь тернист, ведь ты ....</title>
+		<meta name="description" content="Это развлекательный сайт, на котором вы можете подставить профессию в фразу 'Твой путь тернист, ведь ты'">
 	</head>
-	<body>
-		<h1>Твой путь тернист, ведь ты</h1>
+	<body class="font-quam bg-anakiwa">
+		<YourWay
+			client:load
+		/>
 	</body>
 </html>
