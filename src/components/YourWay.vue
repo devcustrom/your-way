@@ -1,15 +1,15 @@
 <template>
-	<div class="container px-3 lg:px-10 pt-[60px] text-mine-shaft grid items-center min-h-screen relative mx-auto">
-		<div class="grid gap-10">
-			<div class="">
+	<div class="container px-3 lg:px-10 pt-[60px] pb-10 text-mine-shaft grid items-center min-h-screen relative mx-auto">
+		<div class="grid gap-10 items-center">
+			<div class="sm:col-span-2 w-max mx-auto">
 				<h1
 					ref="h1"
-					class="grid text-center justify-items-center mx-auto max-w-max text-[28px] sm:text-[34px]"
+					class="grid text-center justify-items-center mx-auto max-w-max text-[28px] sm:text-[34px] md:text-[44px] lg:text-[60px]"
 				>
 					<span class="text-left">Твой путь тернист, ведь ты </span>
 					<span
 						ref="span"
-						class="uppercase self-center text-center leading-none text-[28px] w-max transition-all font-black"
+						class="uppercase self-center text-center leading-none w-max transition-all font-black"
 						v-text="profession"
 					></span>
 				</h1>
@@ -29,7 +29,7 @@
 				>
 			</div>
 			<div 
-				class="absolute top-1/2 inset-x-3 -translate-y-1/2 z-[-1] block text-center opacity-20"
+				class="absolute sm:static sm:col-span-3 top-1/2 inset-x-3 -translate-y-1/2 z-[-1] block text-center opacity-20"
 				ref="parentEl"
 			>
 				<span
