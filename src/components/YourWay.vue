@@ -1,6 +1,6 @@
 <template>
 	<div class="container px-3 lg:px-10 pt-[60px] grid-cols-[100%] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
-		<div class="grid gap-10 grid-cols-[100%] items-center sm:grid-cols-[1fr,auto]">
+		<div class="grid gap-10 grid-cols-[100%] items-center sm:grid-cols-[auto,1fr]">
 			<div class="max-w-max mx-auto">
 				<h1
 					ref="h1"
@@ -16,12 +16,39 @@
 				<input
 				class="font-jost h-10 mt-3 bg-transparent w-full border-b border-thunder placeholder:text-thunder focus:outline-none focus-visible:border-mine-shaft	 text-sm leading-none pb-2 pt-4 text-thunder"
 					type="text"
-					placeholder="Введите профессию..."
+					placeholder="Введите что душе угодно..."
 					v-model="inputValue"
 					@change="setProffesion(inputValue)"
 				>
+				<transition
+					enter-from-class="max-h-0"
+					enter-to-class="max-h-[26px]"
+					leave-from-class="max-h-[26px]"
+					leave-to-class="max-h-0"
+				>
+					<button
+						v-if="inputValue"
+						@click="copy()"
+						class="transition-all focus:outline-none outline-none focus-visible:underline overflow-hidden border border-t-0 border-thunder px-4 w-full font-bold"
+					>
+						<transition
+							enter-from-class="opacity-0"
+							enter-to-class="opacity-100"
+							leave-from-class="opacity-100"
+							leave-to-class="opacity-0"
+							mode="out-in"
+						>
+							<span class="transition-all" v-if="copied">
+								Ссылка скопированна
+							</span>
+							<span class="transition-all" v-else>
+								Поделиться
+							</span>
+						</transition>
+					</button>
+				</transition>
 			</div>
-			<div class="aspect-square group relative sm:w-[220px] md:w-[320px] lg:w-[500px]">
+			<div class="aspect-square group relative">
 				<img
 					class="w-full h-full object-contain transition-all group-hover:opacity-0"
 					:class="image ? '' : 'opacity-0'"
@@ -65,6 +92,7 @@
 	import { fitText } from '@tools/fitText'
 
 	const profession = ref('программист')
+	const copied = ref(false)
 	const h1 = ref(null)
 	const span = ref(null)
 	const textEl = ref(null)
@@ -98,23 +126,34 @@
 				profession.value = p
 			}
 			setTimeout(() => {
-				// fit()
-				fitText(h1.value, span.value)
+				fitText(h1.value, span.value, {
+					max: 150
+				})
 				fitText(parentEl.value, textEl.value)
 			}, 1)
 		}, 150)
 		image.value = randomImage()
 	}
 
+	const copy = () => {
+		let url = new URL(window.location)
+		url.searchParams.set('profession', inputValue.value)
+		history.pushState(inputValue.value, null, url)
+		window.navigator.clipboard.writeText(url)
+		copied.value = true
+		setTimeout(() => {
+			copied.value = false
+		}, 3000)
+	}
+
 	watch(profession, () => {
 		if(profession.value) {
 			localStorage.setItem('profession', profession.value)
+		} else {
+			profession.value = '....'
 		}
 	})
 
-	const fit = () => {
-		
-	}
 	onMounted(() => {
 		window.addEventListener('resize', () => { setProffesion() }, true)
 		

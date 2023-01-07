@@ -5,5 +5,7 @@ export function fitText(parent, text, options = {}) {
 	const newHeight = parentWidth / (width / height)
 	const style = window.getComputedStyle(text, null).getPropertyValue('font-size');
 	const currentFontSize = parseFloat(style);
-	text.style['font-size'] = `${newHeight / (height / currentFontSize)}px`
+	const newFontSize = newHeight / (height / currentFontSize)
+	const { max } = options
+	text.style['font-size'] = `${ max && newFontSize > max ? max : newFontSize}px`
 }
