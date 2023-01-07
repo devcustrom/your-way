@@ -1,6 +1,6 @@
 <template>
 	<div class="container px-3 lg:px-10 pt-[60px] grid-cols-[100%] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
-		<div class="grid gap-10 grid-cols-[100%] items-center sm:grid-cols-[auto,1fr]">
+		<div class="grid gap-10 grid-cols-[100%] max-w-max mx-auto items-center sm:grid-cols-[auto,1fr]">
 			<div class="max-w-max mx-auto">
 				<h1
 					ref="h1"
@@ -48,7 +48,7 @@
 					</button>
 				</transition>
 			</div>
-			<div class="aspect-square group relative">
+			<div class="aspect-square group relative max-w-[500px]">
 				<img
 					class="w-full h-full object-contain transition-all group-hover:opacity-0"
 					:class="image ? '' : 'opacity-0'"
@@ -90,6 +90,7 @@
 <script setup>
 	import { onMounted, ref, watch } from 'vue'
 	import { fitText } from '@tools/fitText'
+	import { checkSizes } from '@tools/media'
 
 	const profession = ref('программист')
 	const copied = ref(false)
@@ -155,7 +156,7 @@
 	})
 
 	onMounted(() => {
-		window.addEventListener('resize', () => { setProffesion() }, true)
+		checkSizes(setProffesion)
 		
 		const params = new Proxy(new URLSearchParams(window.location.search), {
 			get: (searchParams, prop) => searchParams.get(prop),
