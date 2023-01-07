@@ -1,10 +1,10 @@
 <template>
-	<div class="container px-3 lg:px-10 pt-[60px] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
-		<div class="grid gap-10 items-center grid-cols-[1fr,auto]">
-			<div class="w-max mx-auto">
+	<div class="container px-3 lg:px-10 pt-[60px] grid-cols-[100%] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
+		<div class="grid gap-10 grid-cols-[100%] items-center sm:grid-cols-[1fr,auto]">
+			<div class="max-w-max mx-auto">
 				<h1
 					ref="h1"
-					class="grid text-center justify-items-center mx-auto max-w-max text-[28px] sm:text-[34px] md:text-[44px] lg:text-[60px]"
+					class="grid grid-cols-[100%] text-center justify-items-center mx-auto max-w-max text-[28px] sm:text-[34px] md:text-[44px] lg:text-[60px]"
 				>
 					<span class="text-left">Твой путь тернист, ведь ты </span>
 					<span
@@ -28,7 +28,7 @@
 					:src="image"
 					:alt="`Твой путь тернист, ведь ты ${profession}`"
 				>
-				<div class="bg-white rounded-2xl p-5 text-2xl absolute no-scrollbar overflow-y-auto inset-0 transition-all opacity-0 group-hover:opacity-100">
+				<div class="bg-white invisible group-hover:visible rounded-2xl p-5 text-2xl absolute no-scrollbar overflow-y-auto inset-0 transition-all opacity-0 group-hover:opacity-100">
 					<ul
 						class="-mt-2 -ml-2 flex flex-wrap justify-center"
 					>
@@ -94,9 +94,13 @@
 		textEl.value.style['font-size'] = `16px`
 		span.value.style['font-size'] = `16px`
 		setTimeout(() => {
-			profession.value = p
+			if(p) {
+				profession.value = p
+			}
 			setTimeout(() => {
-				fit()
+				// fit()
+				fitText(h1.value, span.value)
+				fitText(parentEl.value, textEl.value)
 			}, 1)
 		}, 150)
 		image.value = randomImage()
@@ -109,11 +113,10 @@
 	})
 
 	const fit = () => {
-		fitText(h1.value, span.value)
-		fitText(parentEl.value, textEl.value)
+		
 	}
 	onMounted(() => {
-		window.addEventListener('resize', () => { fit() }, true)
+		window.addEventListener('resize', () => { setProffesion() }, true)
 		
 		const params = new Proxy(new URLSearchParams(window.location.search), {
 			get: (searchParams, prop) => searchParams.get(prop),
@@ -124,7 +127,7 @@
 		} else if(localStorage.getItem('profession')) {
 			setProffesion(localStorage.getItem('profession'))
 		} else {
-			fit()
+			setProffesion()
 		}
 	})
 </script>
