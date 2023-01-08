@@ -52,7 +52,7 @@
 				<img
 					class="w-full h-full object-contain transition-all group-hover:opacity-0"
 					:class="image ? '' : 'opacity-0'"
-					:src="image"
+					:src="`/images/${image}.svg`"
 					:alt="`Твой путь тернист, ведь ты ${profession}`"
 				>
 				<div class="bg-white invisible group-hover:visible rounded-2xl p-5 text-2xl absolute no-scrollbar overflow-y-auto inset-0 transition-all opacity-0 group-hover:opacity-100">
@@ -102,9 +102,16 @@
 	const sizeSVG = ref(80)
 	const randomImage = () => {
 		const images = [
-			'/images/dog.svg',
-			'/images/orange.svg',
-			'/images/2023.svg'
+			'dog',
+			'goose',
+			'hamster',
+			'hedgehog',
+			'lion',
+			'macaque',
+			'penguin',
+			'pig',
+			'rabbit',
+			'turtle'
 		]
 
 		return images[Math.floor(Math.random() * images.length)]
