@@ -27,7 +27,7 @@
 						leave-from-class="opacity-100"
 						leave-to-class="opacity-0"
 					>
-						<div v-if="inputValue && searchResult.length" class="transition-all after:pointer-events-none before:pointer-events-none absolute top-full bg-white no-scrollbar max-h-32 after:bg-gradient-to-t before:bg-gradient-to-b before:from-white before:h-8 before:block before:sticky before:top-0 before:w-full overflow-y-auto w-full after:from-white after:h-8 after:sticky after:bottom-0 after:w-full after:block">
+						<div v-if="inputValue && searchResult.length" class="transition-all z-[1] after:pointer-events-none before:pointer-events-none absolute top-full bg-white no-scrollbar max-h-32 after:bg-gradient-to-t before:bg-gradient-to-b before:from-white before:h-8 before:block before:sticky before:top-0 before:w-full overflow-y-auto w-full after:from-white after:h-8 after:sticky after:bottom-0 after:w-full after:block">
 							<ul class="p-4 -my-8">
 								<li
 									v-for="item in searchResult"
@@ -161,7 +161,7 @@
 
 		return images[Math.floor(Math.random() * images.length)]
 	}
-	const image = ref('')
+	const image = ref('dog')
 
 	const professions = ref({})
 	const words = ref({})
