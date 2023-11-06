@@ -4,3 +4,9 @@ export async function getSpecializations() {
 
 	return s
 }
+
+export async function getWords() {
+	let s = await (await fetch('/words.json')).json()
+
+	return s
+}
