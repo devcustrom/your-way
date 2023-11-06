@@ -11,11 +11,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^2.1.3",
-    "@astrojs/vue": "^1.2.2",
-    "astro": "^1.9.0",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vue": "^3.0.3",
+    "astro": "^3.4.3",
     "fit-text": "^2.0.1",
-    "tailwindcss": "^3.0.24",
-    "vue": "^3.2.30"
+    "tailwindcss": "^3.2.4",
+    "vue": "^3.2.45"
   }
 }
