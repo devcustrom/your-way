@@ -191,7 +191,7 @@
 
 	const copy = () => {
 		let url = new URL(window.location)
-		url.searchParams.set('word', word.value)
+		url.searchParams.set('w', word.value)
 		history.pushState(word.value, null, url)
 		window.navigator.clipboard.writeText(url)
 		copied.value = true
@@ -219,7 +219,7 @@
 			get: (searchParams, prop) => searchParams.get(prop),
 		})
 		
-		if(params.w || params.profession) {
+		if(params.w || params.profession || params.word) {
 			setProfession(params.w || params.profession)
 		} else if(localStorage.getItem('w') || localStorage.getItem('profession')) {
 			setProfession(localStorage.getItem('w') || localStorage.getItem('profession'))
