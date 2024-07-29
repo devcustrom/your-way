@@ -218,9 +218,9 @@
 		const params = new Proxy(new URLSearchParams(window.location.search), {
 			get: (searchParams, prop) => searchParams.get(prop),
 		})
-		
-		if(params.w || params.profession || params.word) {
-			setProfession(params.w || params.profession)
+		const profession = params.w || params.profession || params.word
+		if(profession) {
+			setProfession(profession)
 		} else if(localStorage.getItem('w') || localStorage.getItem('profession')) {
 			setProfession(localStorage.getItem('w') || localStorage.getItem('profession'))
 		} else {
