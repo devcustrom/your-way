@@ -1,5 +1,5 @@
 ---
-import YourWay from "../components/YourWay.vue";
+import YourWay from "@components/YourWay.vue";
 import '@css/fonts.css'
 ---
 <html lang="ru">
@@ -13,7 +13,7 @@ import '@css/fonts.css'
 	</head>
 	<body class="font-quam bg-anakiwa">
 		<YourWay
-			client:load
+			client:only="vue"
 		/>
 	</body>
 </html>

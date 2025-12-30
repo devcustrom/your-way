@@ -131,12 +131,18 @@
 	</div>
 </template>
 
-<script setup>
-	import { onMounted, ref, watch, computed } from 'vue'
+<script setup lang="ts">
+	import { onMounted, ref, watch, computed, nextTick } from 'vue'
 	import { fitText } from '@tools/fitText'
-	import { checkSizes } from '@tools/media'
-	import { getSpecializations, getWords } from '@store/Specializations.js'
+	import useMedia from '@tools/media'
+	import { getSpecializations, getWords } from '@store/Specializations'
 
+	const {
+		sm,
+		md,
+		lg,
+		xl
+	} = useMedia()
 	const word = ref('программист')
 	const copied = ref(false)
 	const h1 = ref(null)
@@ -144,7 +150,6 @@
 	const textEl = ref(null)
 	const parentEl = ref(null)
 	const inputValue = ref('')
-	const sizeSVG = ref(80)
 	const randomImage = () => {
 		const images = [
 			'dog',
@@ -171,35 +176,42 @@
 		return list.filter(i => i.includes(inputValue.value.toLowerCase()))
 	})
 
-	const setProfession = (p) => {
+	const setProfession = (p: string = '') => {
 		textEl.value.style['font-size'] = `16px`
 		span.value.style['font-size'] = `16px`
-		setTimeout(() => {
+		setTimeout(async () => {
 			if(p) {
 				word.value = p
 			}
-			setTimeout(() => {
-				fitText(h1.value, span.value, {
-					max: 150
-				})
-				fitText(parentEl.value, textEl.value)
-			}, 1)
+			await nextTick()
+			fitText(h1.value, span.value, {
+				max: 150
+			})
+			fitText(parentEl.value, textEl.value)
 		}, 150)
 		image.value = randomImage()
 		inputValue.value = ''
 	}
 
 	const copy = () => {
-		let url = new URL(window.location)
+		let url = new URL(window.location.toString())
 		url.searchParams.set('w', word.value)
 		history.pushState(word.value, null, url)
-		window.navigator.clipboard.writeText(url)
+		window.navigator.clipboard.writeText(url.toString())
 		copied.value = true
 		setTimeout(() => {
 			copied.value = false
 		}, 3000)
 	}
 
+	watch([
+		sm,
+		md,
+		lg,
+		xl
+	], () => {
+		setProfession()
+	})
 	watch(word, () => {
 		if(word.value) {
 			localStorage.setItem('w', word.value)
@@ -212,12 +224,14 @@
 		// 27
 	]
 
-	onMounted(async () => {
-		checkSizes(setProfession)
-		
+	onMounted(async () => {		
 		const params = new Proxy(new URLSearchParams(window.location.search), {
-			get: (searchParams, prop) => searchParams.get(prop),
-		})
+			get: (searchParams, prop) => searchParams.get(prop as string),
+		}) as {
+			w?: string,
+			profession?: string,
+			word?: string
+		}
 		const profession = params.w || params.profession || params.word
 		if(profession) {
 			setProfession(profession)
