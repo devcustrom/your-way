@@ -1,5 +1,5 @@
 <template>
-	<div class="container px-3 lg:px-10 pt-[60px] grid-cols-[100%] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
+	<div class="container min-w-xs px-3 lg:px-10 pt-[60px] grid-cols-[100%] pb-10 text-mine-shaft grid items-center min-h-screen overflow-hidden relative mx-auto">
 		<div class="grid gap-10 grid-cols-[100%] max-w-max mx-auto items-center lg:grid-cols-[auto,1fr]">
 			<div class="max-w-max mx-auto grid grid-cols-[100%]">
 				<h1

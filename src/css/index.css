@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import './fonts.css' layer(base);
+
+@theme {
+	--font-quam: "Quam", var(--font-sans);
+	--font-jost: "Jost", var(--font-sans);
+	--breakpoint-2xl: initial;
+	--color-inherit: inherit;
+	--color-anakiwa: #ADE2FF;
+	--color-malibu: #56C3FF;
+	--color-thunder: #1F1B1F;
+	--color-mine-shaft: #282828;
+}
